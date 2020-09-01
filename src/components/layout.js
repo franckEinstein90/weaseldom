@@ -12,52 +12,32 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import './Table.css'
-
-const cards = (function(){
-    const suits = ["clubs", "spades", "heart", "diamond"]; 
-    const values = "1-2-3-4-5-6-7-8-9-10-J-Q-K-A".split('-');
-    return {
-        newPack : () => {
-            const suitedCards = values.map(value => suits.map(s => `${s}-${value}`)); 
-            return suitedCards.reduce((a,b)=>a.concat(b),[]);  
-        }
-    }
-})()
-
-
-
-class Cards extends React.Component {
-    constructor(props){
-        super(props); 
-        this.state = {
-                       
-        }
-        this.state.pack = new Set(cards.newPack()); 
-    }
-
-    render(){
-        return (<div className="cardPack">dsa</div>)
-    }
-
-} 
-
+const cards = require('../core/cards').cards; 
 
 class Table extends React.Component  {
     constructor(props){
         super(props); 
         this.state = {
         }
-        this.state.pack = new Set(cards.newpack()); 
+        this.state.pack = cards.newPack(); 
+        this.getRandomCard = this.getRandomCard.bind( this ); 
     }
 
-    newDeal (){
-        alert('fdsa'); 
+    getRandomCard (){
+      let card = cards.drawRandomCard( this.state.pack ); 
+      let newSet = new Set([...this.state.pack])
+      newSet.delete(card); 
+      this.setState({
+        pack:newSet 
+      })
+      alert(card)
     }
 
     render(){
         return ( 
             <div className="pokerTable">
-                <button onClick={x=>this.newDeal()}>deal</button>
+                <button onClick={x=>this.getRandomCard()}>deal</button>
+                <div className="cardPack">{this.state.pack.size}</div>
                 {this.props.children}
             </div>)
      }
