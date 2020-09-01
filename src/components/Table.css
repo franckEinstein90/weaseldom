@@ -1,0 +1,14 @@
+.cardPack {
+    width:120px; 
+    height:200px; 
+    background-color:pink; 
+    margin-left:30px; 
+    margin-top:10px; 
+}
+
+.pokerTable {
+    width:100%;  
+    height:500px; 
+    background-color:blue; 
+
+}
