@@ -2,13 +2,35 @@
     width:120px; 
     height:200px; 
     background-color:pink; 
-    margin-left:30px; 
-    margin-top:10px; 
 }
 
 .pokerTable {
     width:100%;  
-    height:500px; 
+    height:500px;
+    border: 1px solid red;  
     background-color:blue; 
+    padding:3px,3px,3px,3px; 
+}
 
+.pokerTable button {
+    margin-top:30px; 
+    margin-left:30px; 
+    width:300px; 
+}
+.container {
+    width:100%; 
+    display:flex; 
+    flex-align:justify; 
+    padding-top:30px; 
+    padding-left:30px;
+    padding-right:30px;  
+}
+.spacer {
+    width:20px; 
+    height:100%; 
+}
+.dealtHands{
+    flex:1; 
+    height:200px; 
+    background-color:yellow; 
 }
